@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TaskController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,6 @@ Route::get('/Users/verUsuario', [UsersController::class, 'ver'])->name('Users.ve
 Route::get('/Users/actualizarUsuario/{id}', [UsersController::class, 'actualizar'])->name('Users.actualizarUsuario');
 Route::get('/Users/eliminarUsuario/{id}', [UsersController::class, 'eliminar'])->name('Users.eliminarUsuario');
 Route::get('/dashboard', [UsersController::class, 'dashboard'])->name('dashboard')->middleware('auth');
-Route::get('/Task/tareas', [UsersController::class, 'tareas'])->name('Task.tareas');
 
 //Crear usuario
 Route::post('/Users/crearUsuarioPost', [UsersController::class, 'crearNuevoUsuario'])->name('Users.crearNuevoUsuario');
@@ -27,3 +27,18 @@ Route::delete('/Users/eliminarUsuarioSQL/{id}', [UsersController::class, 'elimin
 
 //Validar usuario correcto
 Route::post('/Users/validarUsuario', [UsersController::class, 'validarUsuario'])->name('Users.validarUsuario');
+
+//Tareas vistas
+Route::get('/Task/tareas', [TaskController::class, 'tareas'])->name('Task.tareas');
+Route::get('/Task/nuevaTarea', [TaskController::class, 'nuevaTarea'])->name('Task.nuevaTarea');
+Route::get('/tasks/editarTareas/{id}', [TaskController::class, 'editarTareas'])->name('Task.editarTareas');
+Route::get('/tasks/eliminarTareas/{id}', [TaskController::class, 'eliminarTareas'])->name('Task.eliminarTareas');
+
+//Crear usuario
+Route::post('/Task/enviarNuevaTarea', [TaskController::class, 'enviarNuevaTarea'])->name('Task.enviarNuevaTarea');
+
+//Actualizar usuario
+Route::put('/tasks/{id}', [TaskController::class, 'actualizarTareas'])->name('Task.update');
+
+//Eliminar usuario
+Route::delete('/tasks/confirmarEliminarTarea', [TaskController::class, 'confirmarEliminarTarea'])->name('Task.confirmarEliminarTarea');

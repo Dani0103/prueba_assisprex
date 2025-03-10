@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 
 class UsersController extends Controller
 {
+    public function __construct(Type $var = null) {
+        $this->var = $var;
+        $this->consulta = 'http://localhost:3000/api/task/';
+    }
 
     public function dashboard(){
         return view('dashboard');
     }
+
     public function crear(){
         return view('Users.crearUsuario');
     }

@@ -25,7 +25,7 @@
       <td>{{ $Usuario->updated_at}}</td>
       <td>
         <div style="display: flex; gap: 10px;">
-          <a href="{{ route('Users.actualizarUsuario', ['id' => $Usuario->id]) }}" class="btn btn-primary">Editar</a>
+          <a href="{{ route('Users.actualizarUsuario', ['id' => $Usuario->id]) }}" class="btn btn-warning">Editar</a>
           <a href="{{ route('Users.eliminarUsuario', ['id' => $Usuario->id]) }}" class="btn btn-danger">Eliminar</a>
         </div>
       </td>
